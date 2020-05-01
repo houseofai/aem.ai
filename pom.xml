@@ -25,18 +25,10 @@
     <description>AEM.AI</description>
 
     <modules>
-        <module>all</module>
+<!--         <module>all</module> -->
         <module>core</module>
         <module>ui.apps</module>
         <module>ui.apps.structure</module>
-        <module>ui.content</module>
-        <module>it.tests</module>
-        <module>it.launcher</module>
-        <module>dispatcher.ams</module>
-        <module>dispatcher.cloud</module>
-        <module>ui.frontend.general</module>
-        <module>ui.frontend.angular</module>
-        <module>ui.frontend.react</module>
     </modules>
 
     <properties>
@@ -730,7 +722,29 @@ Bundle-DocURL:
                 <version>1.0.1</version>
                 <scope>test</scope>
             </dependency>
+			<dependency>
+				<groupId>software.amazon.awssdk</groupId>
+				<artifactId>aws-sdk-java-v1-osgi</artifactId>
+				<version>1.11.774-SNAPSHOT</version>
+				<scope>provided</scope>
+			</dependency>
         </dependencies>
     </dependencyManagement>
 
+	<repositories>
+		<repository>
+			<id>adobe-public-releases</id>
+			<name>Adobe Public Repository</name>
+			<url>https://repo.adobe.com/nexus/content/groups/public/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>adobe-public-releases</id>
+			<name>Adobe Public Repository</name>
+			<url>https://repo.adobe.com/nexus/content/groups/public/</url>
+			<layout>default</layout>
+		</pluginRepository>
+	</pluginRepositories>
 </project>

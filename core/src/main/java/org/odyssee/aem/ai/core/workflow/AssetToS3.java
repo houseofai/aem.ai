@@ -1,4 +1,4 @@
-package org.aem.aws_sdkv1_connector.core.workflow;
+package org.odyssee.aem.ai.core.workflow;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;

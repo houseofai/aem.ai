@@ -1,4 +1,4 @@
-package org.aem.aws_sdkv1_connector.core;
+package org.odyssee.aem.ai.core.service;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.AttributeType;

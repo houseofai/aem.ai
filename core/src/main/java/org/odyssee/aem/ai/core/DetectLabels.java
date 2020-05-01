@@ -1,4 +1,4 @@
-package org.aem.rekognition.core;
+package org.odyssee.aem.ai.core;
 
 import java.io.File;
 import java.io.FileInputStream;
