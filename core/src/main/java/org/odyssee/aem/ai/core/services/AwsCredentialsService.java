@@ -1,4 +1,4 @@
-package org.odyssee.aem.ai.core.service;
+package org.odyssee.aem.ai.core.services;
 
 import com.amazonaws.auth.BasicAWSCredentials;
 

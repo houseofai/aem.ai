@@ -1,5 +1,6 @@
-package org.odyssee.aem.ai.core.service;
+package org.odyssee.aem.ai.core.services;
 
+import org.apache.commons.lang.StringUtils;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.metatype.annotations.Designate;
@@ -14,14 +15,23 @@ import com.amazonaws.regions.Region;
 @Designate(ocd = AwsCredentialsConfiguration.class)
 public class AwsCredentialsServiceImpl implements AwsCredentialsService {
 
-    private final Logger logger = LoggerFactory.getLogger(AwsCredentialsService.class);
+    private final Logger log = LoggerFactory.getLogger(AwsCredentialsService.class);
 	
     private BasicAWSCredentials credentials; 
     private Region region;
     
 	@Activate
 	public void activate(AwsCredentialsConfiguration conf) throws Exception {
-		this.credentials = new BasicAWSCredentials(conf.accessKey(), conf.privateKey());
+		log.info("AwsCredentialsService loaded");
+		String accessKey = conf.accessKey();
+		String privateKey = conf.privateKey();
+		
+
+		log.info("AwsCredentialsService Key: "+ accessKey);
+		
+		if(!StringUtils.isEmpty(accessKey) && !StringUtils.isEmpty(privateKey)) {
+			this.credentials = new BasicAWSCredentials(accessKey, privateKey);
+		}
 	}
 	
 	@Override

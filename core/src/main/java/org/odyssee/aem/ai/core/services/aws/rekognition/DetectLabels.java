@@ -1,4 +1,4 @@
-package org.odyssee.aem.ai.core;
+package org.odyssee.aem.ai.core.services.aws.rekognition;
 
 import java.io.File;
 import java.io.FileInputStream;

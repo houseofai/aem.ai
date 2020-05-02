@@ -106,3 +106,4 @@ it.tests
 it.launcher
 dispatcher.cloud
 dispatcher.ams
+org.odyssee.aem.ai.core.services.AwsCredentialsServiceImpl.xml
