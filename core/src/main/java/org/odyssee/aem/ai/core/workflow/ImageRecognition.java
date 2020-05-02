@@ -41,9 +41,6 @@ public class ImageRecognition implements WorkflowProcess {
 
 	@Override
 	public void execute(WorkItem item, WorkflowSession wkfSsession, MetaDataMap args) throws WorkflowException {
-
-		log.info("Getting the AWS credentials service: "+awsCredentialsService);
-		log.info("Getting the AWS credentials: "+awsCredentialsService.getCredentials());
 		
 		ResourceResolver resourceResolver = wkfSsession.adaptTo(ResourceResolver.class);
 		Session session = resourceResolver.adaptTo(Session.class);
@@ -70,14 +67,7 @@ public class ImageRecognition implements WorkflowProcess {
 			DetectLabelsResult result = rekognitionClient.detectLabels(request);
 			List<Label> labels = result.getLabels();
 
-			log.info("Detected labels for " + asset.getPath());
 			String[] formattedLabels = new String[labels.size()];
-			for (int i=0; i < labels.size();i++) {
-				Label label = labels.get(i);
-				log.info(label.getName() + ": " + label.getConfidence().toString());
-				formattedLabels[i] = label.getName() + "(" + label.getConfidence().toString()+")";
-			}
-
 			assetNode.setProperty("awstags", formattedLabels);
 			
 			if (session.hasPendingChanges()) {

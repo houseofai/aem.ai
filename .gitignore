@@ -101,7 +101,6 @@ coverage/
 ui.frontend.react
 ui.frontend.general
 ui.frontend.angular
-ui.content
 it.tests
 it.launcher
 dispatcher.cloud
