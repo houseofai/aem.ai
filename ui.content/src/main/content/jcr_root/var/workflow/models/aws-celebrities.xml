@@ -2,13 +2,13 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:isCheckedOut="{Boolean}false"
     jcr:primaryType="cq:WorkflowModel"
-    jcr:uuid="de4ddfe1-1611-4039-bb80-d96b18667c14"
+    jcr:uuid="9f685bfd-127f-4fed-a5fd-c953677b747b"
     sling:resourceType="cq/workflow/components/model"
     description=""
-    title="AWS Image Labeling">
+    title="AWS Celebrities in image">
     <metaData
-        cq:generatingPage="/conf/aem.ai/settings/workflow/models/aws-image-labeling/jcr:content"
-        cq:lastModified="{Long}1588436929083"
+        cq:generatingPage="/conf/aem.ai/settings/workflow/models/aws-celibrities/jcr:content"
+        cq:lastModified="{Long}1588437337366"
         cq:lastModifiedBy="admin"
         jcr:primaryType="nt:unstructured"/>
     <nodes jcr:primaryType="nt:unstructured">
@@ -20,11 +20,11 @@
         </node0>
         <node1
             jcr:primaryType="cq:WorkflowNode"
-            title="Image Recognition"
+            title="Celebrities in image recognition"
             type="PROCESS">
             <metaData
                 jcr:primaryType="nt:unstructured"
-                PROCESS="org.odyssee.aem.ai.core.workflow.ImageRecognition"
+                PROCESS="org.odyssee.aem.ai.core.workflow.CelebrityRecognition"
                 PROCESS_AUTO_ADVANCE="true"/>
         </node1>
         <node2

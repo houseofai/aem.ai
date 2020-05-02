@@ -4,7 +4,7 @@
     jcr:primaryType="cq:WorkflowModel"
     jcr:uuid="c77a1829-05eb-4bfd-b7a6-7ccd05bb1f0f"
     sling:resourceType="cq/workflow/components/model"
-    description="No Description"
+    description=""
     title="AWS Text in image">
     <metaData
         cq:generatingPage="/conf/aem.ai/settings/workflow/models/aws-text-in-image/jcr:content"
@@ -24,7 +24,8 @@
             type="PROCESS">
             <metaData
                 jcr:primaryType="nt:unstructured"
-                PROCESS="org.odyssee.aem.ai.core.workflow.TextRecognition"/>
+                PROCESS="org.odyssee.aem.ai.core.workflow.TextRecognition"
+                PROCESS_AUTO_ADVANCE="true"/>
         </node1>
         <node2
             jcr:primaryType="cq:WorkflowNode"

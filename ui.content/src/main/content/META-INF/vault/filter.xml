@@ -4,4 +4,5 @@
     <filter root="/content/aem.ai" mode="merge"/>
     <filter root="/var/workflow/models/aws-image-labeling"/>
     <filter root="/var/workflow/models/aws-text-in-image"/>
+    <filter root="/var/workflow/models/aws-celebrities"/>
 </workspaceFilter>
