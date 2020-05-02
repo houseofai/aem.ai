@@ -471,25 +471,6 @@
                                         requiredCascading="default"
                                         visibilityCascading="default"/>
                                 </tags>
-                                <_x0031_588424230315
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="dam/gui/components/admin/schemafield"
-                                    fieldLabel="AWS Rekognition Tags"
-                                    resourceType="granite/ui/components/coral/foundation/form/multifield">
-                                    <granite:data
-                                        jcr:primaryType="nt:unstructured"
-                                        metaType="mvtext"
-                                        requiredCascading="default"
-                                        visibilityCascading="default"/>
-                                    <field
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        name="./jcr:content/metadata/awstags">
-                                        <granite:data
-                                            jcr:primaryType="nt:unstructured"
-                                            cq-msm-lockable="./metadata/awstags"/>
-                                    </field>
-                                </_x0031_588424230315>
                                 <autotags
                                     cq:showOnCreate="{Boolean}true"
                                     jcr:primaryType="nt:unstructured"

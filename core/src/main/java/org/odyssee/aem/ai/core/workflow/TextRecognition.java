@@ -22,17 +22,17 @@ import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.services.rekognition.AmazonRekognition;
 import com.amazonaws.services.rekognition.AmazonRekognitionClientBuilder;
-import com.amazonaws.services.rekognition.model.DetectLabelsRequest;
-import com.amazonaws.services.rekognition.model.DetectLabelsResult;
+import com.amazonaws.services.rekognition.model.DetectTextRequest;
+import com.amazonaws.services.rekognition.model.DetectTextResult;
 import com.amazonaws.services.rekognition.model.Image;
-import com.amazonaws.services.rekognition.model.Label;
+import com.amazonaws.services.rekognition.model.TextDetection;
 import com.amazonaws.util.IOUtils;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.DamConstants;
 
-@Component(service = WorkflowProcess.class, property = { "process.label=Image Recognition" })
-public class ImageRecognition implements WorkflowProcess {
+@Component(service = WorkflowProcess.class, property = { "process.label=Text in image recognition" })
+public class TextRecognition implements WorkflowProcess {
 
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -46,7 +46,6 @@ public class ImageRecognition implements WorkflowProcess {
 		Session session = resourceResolver.adaptTo(Session.class);
 
 		String path = item.getWorkflowData().getPayload().toString();
-		
 		Resource resource = resourceResolver.getResource(path);
 		Asset asset = resource.adaptTo(Asset.class);
 		
@@ -62,20 +61,19 @@ public class ImageRecognition implements WorkflowProcess {
                     .withCredentials(new AWSStaticCredentialsProvider(awsCredentialsService.getCredentials()))
                     .build();
 
-			DetectLabelsRequest request = new DetectLabelsRequest().withImage(new Image().withBytes(imageBytes))
-					.withMaxLabels(10).withMinConfidence(77F);
+			DetectTextRequest request = new DetectTextRequest().withImage(new Image().withBytes(imageBytes));
 
-			DetectLabelsResult result = rekognitionClient.detectLabels(request);
-			List<Label> labels = result.getLabels();
+			DetectTextResult result = rekognitionClient.detectText(request);
+			List<TextDetection> labels = result.getTextDetections();
 
 			String[] formattedLabels = new String[labels.size()];
 			for (int i=0; i < labels.size();i++) {
-				Label label = labels.get(i);
-				log.info(label.getName() + ": " + label.getConfidence().toString());
-				formattedLabels[i] = label.getName() + "(" + label.getConfidence().toString()+")";
+				TextDetection label = labels.get(i);
+				log.info(label.getDetectedText() + ": " + label.getConfidence().toString());
+				formattedLabels[i] = label.getDetectedText() + "(" + label.getConfidence().toString()+")";
 			}
-
-			assetNode.setProperty("awstags", formattedLabels);
+			
+			assetNode.setProperty("textsInImage", formattedLabels);
 			
 			if (session.hasPendingChanges()) {
                 session.save();
