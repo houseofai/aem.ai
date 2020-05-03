@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/conf/aem.ai" mode="merge"/>
-    <filter root="/content/aem.ai" mode="merge"/>
-    <filter root="/var/workflow/models/aws-image-labeling"/>
-    <filter root="/var/workflow/models/aws-text-in-image"/>
-    <filter root="/var/workflow/models/aws-celebrities"/>
-    <filter root="/var/workflow/models/aws-boundingbox"/>
+    <filter root="/conf/aem.ai"/>
+    <filter root="/content/aem.ai"/>
+    <filter root="/conf/global/settings/workflow/models/awsrekognition"/>
+    <filter root="/conf/global/settings/dam/adminui-extension/metadataschema/aemai"/>
+    <filter root="/var/workflow/models/awsrekognition"/>
 </workspaceFilter>

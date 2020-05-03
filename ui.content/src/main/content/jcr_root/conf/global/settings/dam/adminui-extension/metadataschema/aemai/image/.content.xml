@@ -239,7 +239,7 @@
                 <tab8
                     granite:rel="aem-assets-metadata-form-tab"
                     jcr:primaryType="nt:unstructured"
-                    jcr:title="Image Tag"
+                    jcr:title="AWS Rekognition"
                     sling:resourceType="granite/ui/components/coral/foundation/container"
                     listOrder="7">
                     <granite:data
@@ -252,10 +252,35 @@
                             sling:resourceType="granite/ui/components/coral/foundation/container"
                             listOrder="0">
                             <items jcr:primaryType="nt:unstructured">
+                                <_x0031_588517719651
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    fieldLabel="Label and Tags"
+                                    resourceType="dam/gui/coral/components/admin/schemaforms/formbuilder/sectionfield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        metaType="section"/>
+                                </_x0031_588517719651>
+                                <_x0031_588431276730
+                                    cq:showOnCreate="{Boolean}true"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    allowCreate="{Boolean}true"
+                                    fieldLabel="Smart Tags"
+                                    metaType="autotags"
+                                    name="./jcr:content/metadata/predictedTags"
+                                    resourceType="dam/gui/coral/components/admin/autotag">
+                                    <granite:rendercondition
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="dam/gui/coral/components/admin/autotag/autotagrendercondition"/>
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        cq-msm-lockable="./metadata/predictedTags"/>
+                                </_x0031_588431276730>
                                 <_x0031_588431252947
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="dam/gui/components/admin/schemafield"
-                                    fieldLabel="AWS Rekognition Tags"
+                                    fieldLabel="Detected Labels"
                                     resourceType="granite/ui/components/coral/foundation/form/multifield">
                                     <granite:data
                                         jcr:primaryType="nt:unstructured"
@@ -279,48 +304,62 @@
                             sling:resourceType="granite/ui/components/coral/foundation/container"
                             listOrder="1">
                             <items jcr:primaryType="nt:unstructured">
-                                <_x0031_588431276730
-                                    cq:showOnCreate="{Boolean}true"
+                                <_x0031_588517884611
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="dam/gui/components/admin/schemafield"
-                                    allowCreate="{Boolean}true"
-                                    fieldLabel="Smart Tags"
-                                    metaType="autotags"
-                                    name="./jcr:content/metadata/predictedTags"
-                                    resourceType="dam/gui/coral/components/admin/autotag">
-                                    <granite:rendercondition
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="dam/gui/coral/components/admin/autotag/autotagrendercondition"/>
+                                    fieldLabel="Faces"
+                                    resourceType="dam/gui/coral/components/admin/schemaforms/formbuilder/sectionfield">
                                     <granite:data
                                         jcr:primaryType="nt:unstructured"
-                                        cq-msm-lockable="./metadata/predictedTags"/>
-                                </_x0031_588431276730>
+                                        metaType="section"/>
+                                </_x0031_588517884611>
+                                <_x0031_588517866499
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    fieldLabel="Detected Faces"
+                                    resourceType="granite/ui/components/coral/foundation/form/multifield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        metaType="mvtext"
+                                        requiredCascading="default"
+                                        visibilityCascading="default"/>
+                                    <field
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        name="./jcr:content/metadata/awsfaces">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="./metadata/awsfaces"/>
+                                    </field>
+                                </_x0031_588517866499>
+                                <_x0031_588517798422
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    fieldLabel="Recognized Celebrities"
+                                    resourceType="granite/ui/components/coral/foundation/form/multifield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        metaType="mvtext"
+                                        requiredCascading="default"
+                                        visibilityCascading="default"/>
+                                    <field
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        name="./jcr:content/metadata/celebrities">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="./metadata/celebrities"/>
+                                    </field>
+                                </_x0031_588517798422>
                             </items>
                         </col2>
                         <col3
                             granite:rel="aem-assets-metadata-form-column"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/container"
-                            listOrder="2"/>
-                    </items>
-                </tab8>
-                <tab9
-                    granite:rel="aem-assets-metadata-form-tab"
-                    jcr:primaryType="nt:unstructured"
-                    jcr:title="Text in Image"
-                    sling:resourceType="granite/ui/components/coral/foundation/container"
-                    listOrder="8">
-                    <granite:data
-                        jcr:primaryType="nt:unstructured"
-                        tabid="f3d956e1-c08b-4d57-b59e-39887d10f875"/>
-                    <items jcr:primaryType="nt:unstructured">
-                        <col1
-                            granite:rel="aem-assets-metadata-form-column"
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/container"
-                            listOrder="0">
+                            listOrder="2">
                             <items jcr:primaryType="nt:unstructured">
-                                <_x0031_588431391425
+                                <_x0031_588517762164
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="dam/gui/components/admin/schemafield"
                                     fieldLabel="Detected Texts"
@@ -338,70 +377,11 @@
                                             jcr:primaryType="nt:unstructured"
                                             cq-msm-lockable="./metadata/textsInImage"/>
                                     </field>
-                                </_x0031_588431391425>
+                                </_x0031_588517762164>
                             </items>
-                        </col1>
-                        <col2
-                            granite:rel="aem-assets-metadata-form-column"
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/container"
-                            listOrder="1"/>
-                        <col3
-                            granite:rel="aem-assets-metadata-form-column"
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/container"
-                            listOrder="2"/>
+                        </col3>
                     </items>
-                </tab9>
-                <tab10
-                    granite:rel="aem-assets-metadata-form-tab"
-                    jcr:primaryType="nt:unstructured"
-                    jcr:title="Celebrities"
-                    sling:resourceType="granite/ui/components/coral/foundation/container"
-                    listOrder="9">
-                    <granite:data
-                        jcr:primaryType="nt:unstructured"
-                        tabid="c723923d-bc8c-41b0-83f5-f5042588c4e5"/>
-                    <items jcr:primaryType="nt:unstructured">
-                        <col1
-                            granite:rel="aem-assets-metadata-form-column"
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/container"
-                            listOrder="0">
-                            <items jcr:primaryType="nt:unstructured">
-                                <_x0031_588441924681
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="dam/gui/components/admin/schemafield"
-                                    fieldLabel="Celebrities"
-                                    resourceType="granite/ui/components/coral/foundation/form/multifield">
-                                    <granite:data
-                                        jcr:primaryType="nt:unstructured"
-                                        metaType="mvtext"
-                                        requiredCascading="default"
-                                        visibilityCascading="default"/>
-                                    <field
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        name="./jcr:content/metadata/celebrities">
-                                        <granite:data
-                                            jcr:primaryType="nt:unstructured"
-                                            cq-msm-lockable="./metadata/celebrities"/>
-                                    </field>
-                                </_x0031_588441924681>
-                            </items>
-                        </col1>
-                        <col2
-                            granite:rel="aem-assets-metadata-form-column"
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/container"
-                            listOrder="1"/>
-                        <col3
-                            granite:rel="aem-assets-metadata-form-column"
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/container"
-                            listOrder="2"/>
-                    </items>
-                </tab10>
+                </tab8>
             </items>
         </tabs>
     </items>

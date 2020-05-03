@@ -1,4 +1,4 @@
-package org.odyssee.aem.ai.core.workflow;
+package org.odyssee.aem.ai.core.workflow.aws.rekognition;
 
 import java.nio.ByteBuffer;
 import java.util.List;
@@ -22,17 +22,17 @@ import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.services.rekognition.AmazonRekognition;
 import com.amazonaws.services.rekognition.AmazonRekognitionClientBuilder;
-import com.amazonaws.services.rekognition.model.DetectTextRequest;
-import com.amazonaws.services.rekognition.model.DetectTextResult;
+import com.amazonaws.services.rekognition.model.Celebrity;
 import com.amazonaws.services.rekognition.model.Image;
-import com.amazonaws.services.rekognition.model.TextDetection;
+import com.amazonaws.services.rekognition.model.RecognizeCelebritiesRequest;
+import com.amazonaws.services.rekognition.model.RecognizeCelebritiesResult;
 import com.amazonaws.util.IOUtils;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.DamConstants;
 
-@Component(service = WorkflowProcess.class, property = { "process.label=Text in image recognition" })
-public class TextRecognition implements WorkflowProcess {
+@Component(service = WorkflowProcess.class, property = { "process.label=AWS Rekognition - Recognizing Celebrities" })
+public class CelebrityRecognition implements WorkflowProcess {
 
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -46,6 +46,7 @@ public class TextRecognition implements WorkflowProcess {
 		Session session = resourceResolver.adaptTo(Session.class);
 
 		String path = item.getWorkflowData().getPayload().toString();
+		
 		Resource resource = resourceResolver.getResource(path);
 		Asset asset = resource.adaptTo(Asset.class);
 		
@@ -61,23 +62,25 @@ public class TextRecognition implements WorkflowProcess {
                     .withCredentials(new AWSStaticCredentialsProvider(awsCredentialsService.getCredentials()))
                     .build();
 
-			DetectTextRequest request = new DetectTextRequest().withImage(new Image().withBytes(imageBytes));
+			RecognizeCelebritiesRequest request = new RecognizeCelebritiesRequest().withImage(new Image().withBytes(imageBytes));
 
-			DetectTextResult result = rekognitionClient.detectText(request);
-			List<TextDetection> labels = result.getTextDetections();
+			RecognizeCelebritiesResult result = rekognitionClient.recognizeCelebrities(request);
+			List<Celebrity> labels = result.getCelebrityFaces();
 
 			String[] formattedLabels = new String[labels.size()];
 			for (int i=0; i < labels.size();i++) {
-				TextDetection label = labels.get(i);
-				log.info(label.getDetectedText() + ": " + label.getConfidence().toString());
-				formattedLabels[i] = label.getDetectedText() + "(" + label.getConfidence().toString()+")";
+				Celebrity label = labels.get(i);
+				log.info(label.getName() + ": " + label.getMatchConfidence().toString());
+				formattedLabels[i] = label.getName() + "(" + label.getMatchConfidence().toString()+")";
 			}
-			
-			assetNode.setProperty("textsInImage", formattedLabels);
+
+			assetNode.setProperty("celebrities", formattedLabels);
 			
 			if (session.hasPendingChanges()) {
                 session.save();
 			}
+			
+			wkfSsession.updateWorkflowData(item.getWorkflow(), item.getWorkflowData());
 		} catch (Exception e) {
 			log.error("-->", e);
 		}
