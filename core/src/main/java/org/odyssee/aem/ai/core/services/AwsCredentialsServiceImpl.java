@@ -27,7 +27,7 @@ public class AwsCredentialsServiceImpl implements AwsCredentialsService {
 		String privateKey = conf.privateKey();
 		
 
-		log.info("AwsCredentialsService Key: "+ accessKey);
+//		log.info("AwsCredentialsService Key: "+ accessKey);
 		
 		if(!StringUtils.isEmpty(accessKey) && !StringUtils.isEmpty(privateKey)) {
 			this.credentials = new BasicAWSCredentials(accessKey, privateKey);

@@ -1,8 +1,16 @@
 package org.odyssee.aem.ai.core.workflow;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.jcr.Node;
 import javax.jcr.Session;
 
@@ -22,9 +30,11 @@ import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.services.rekognition.AmazonRekognition;
 import com.amazonaws.services.rekognition.AmazonRekognitionClientBuilder;
+import com.amazonaws.services.rekognition.model.BoundingBox;
 import com.amazonaws.services.rekognition.model.DetectLabelsRequest;
 import com.amazonaws.services.rekognition.model.DetectLabelsResult;
 import com.amazonaws.services.rekognition.model.Image;
+import com.amazonaws.services.rekognition.model.Instance;
 import com.amazonaws.services.rekognition.model.Label;
 import com.amazonaws.util.IOUtils;
 import com.day.cq.commons.jcr.JcrConstants;
@@ -68,12 +78,48 @@ public class ImageRecognition implements WorkflowProcess {
 			DetectLabelsResult result = rekognitionClient.detectLabels(request);
 			List<Label> labels = result.getLabels();
 
+			BufferedImage originalImagebuffer = ImageIO.read(asset.getOriginal().getStream());
+			int height = originalImagebuffer.getHeight();
+	        int width = originalImagebuffer.getWidth();
+	        
+			BufferedImage boxedRenditionBuffer = new BufferedImage(width, height, originalImagebuffer.getType());
+			
+			Graphics2D boxedGraphic = boxedRenditionBuffer.createGraphics();
+			boxedGraphic.drawImage(originalImagebuffer, 0, 0, null);
+			boxedGraphic.setPaint(Color.red);
+			
 			String[] formattedLabels = new String[labels.size()];
 			for (int i=0; i < labels.size();i++) {
 				Label label = labels.get(i);
 				log.info(label.getName() + ": " + label.getConfidence().toString());
 				formattedLabels[i] = label.getName() + "(" + label.getConfidence().toString()+")";
+				
+				List<Instance> instances = label.getInstances();
+				log.info("Instances of " + label.getName());
+	            if (instances.isEmpty()) {
+	            	log.info("  " + "None");
+	            } else {
+	                for (Instance instance : instances) {
+	                	log.info("Confidence: " + instance.getConfidence().toString());
+	                	log.info("Bounding box: " + instance.getBoundingBox().toString());
+	                    
+	                    BoundingBox box = instance.getBoundingBox();
+	                    int left = Math.round(width * box.getLeft());
+	                    int top = Math.round(height * box.getTop());
+	                    
+	                    int boxWidth = Math.round(width * box.getWidth());
+	                    int boxHeight = Math.round(height * box.getHeight());
+	                    boxedGraphic.drawRect(left, top, boxWidth, boxHeight);
+	            		
+						boxedGraphic.setFont(new Font("Serif", Font.PLAIN, 20));
+						boxedGraphic.drawString(label.getName(), left, top-10);
+	                }
+	            }
 			}
+			ByteArrayOutputStream os = new ByteArrayOutputStream();
+			ImageIO.write(boxedRenditionBuffer, "jpeg", os);
+			InputStream is = new ByteArrayInputStream(os.toByteArray());
+			asset.addRendition("Bounding Boxes", is, asset.getMimeType());
 
 			assetNode.setProperty("awstags", formattedLabels);
 			
