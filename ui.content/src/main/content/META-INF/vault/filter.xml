@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/conf/aem.ai"/>
-    <filter root="/content/aem.ai"/>
+<!--     <filter root="/conf/aem.ai"/> -->
+    <filter root="/conf/aemai"/>
+<!--     <filter root="/content/aem.ai"/> -->
+    <filter root="/content/aemai"/>
     <filter root="/conf/global/settings/workflow/models/awsrekognition"/>
     <filter root="/conf/global/settings/dam/adminui-extension/metadataschema/aemai"/>
     <filter root="/var/workflow/models/awsrekognition"/>

@@ -66,12 +66,12 @@
                         <embedded>
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.core</artifactId>
-                            <target>/apps/aem.ai/install</target>
+                            <target>/apps/aemai/install</target>
                         </embedded>
                         <embedded>
                             <groupId>org.odyssee</groupId>
                             <artifactId>aem.ai.core</artifactId>
-                            <target>/apps/aem.ai/install</target>
+                            <target>/apps/aemai/install</target>
                         </embedded>
                     </embeddeds>
                     <subPackages>

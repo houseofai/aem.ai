@@ -55,25 +55,25 @@
                             <groupId>org.odyssee</groupId>
                             <artifactId>aem.ai.ui.apps</artifactId>
                             <type>zip</type>
-                            <target>/apps/aem.ai-packages/application/install</target>
+                            <target>/apps/aemai-packages/application/install</target>
                         </embedded>
                         <embedded>
                             <groupId>org.odyssee</groupId>
                             <artifactId>aem.ai.ui.content</artifactId>
                             <type>zip</type>
-                            <target>/apps/aem.ai-packages/content/install</target>
+                            <target>/apps/aemai-packages/content/install</target>
                         </embedded>
                         <embedded>
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.content</artifactId>
                             <type>zip</type>
-                            <target>/apps/aem.ai-vendor-packages/application/install</target>
+                            <target>/apps/aemai-vendor-packages/application/install</target>
                         </embedded>
                         <embedded>
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.config</artifactId>
                             <type>zip</type>
-                            <target>/apps/aem.ai-vendor-packages/application/install</target>
+                            <target>/apps/aemai-vendor-packages/application/install</target>
                         </embedded>
                     </embeddeds>
                     <subPackages>
