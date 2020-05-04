@@ -307,31 +307,12 @@
                                 <_x0031_588517884611
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="dam/gui/components/admin/schemafield"
-                                    fieldLabel="Faces"
+                                    fieldLabel="Faces and Celebrities"
                                     resourceType="dam/gui/coral/components/admin/schemaforms/formbuilder/sectionfield">
                                     <granite:data
                                         jcr:primaryType="nt:unstructured"
                                         metaType="section"/>
                                 </_x0031_588517884611>
-                                <_x0031_588517866499
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="dam/gui/components/admin/schemafield"
-                                    fieldLabel="Detected Faces"
-                                    resourceType="granite/ui/components/coral/foundation/form/multifield">
-                                    <granite:data
-                                        jcr:primaryType="nt:unstructured"
-                                        metaType="mvtext"
-                                        requiredCascading="default"
-                                        visibilityCascading="default"/>
-                                    <field
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        name="./jcr:content/metadata/awsfaces">
-                                        <granite:data
-                                            jcr:primaryType="nt:unstructured"
-                                            cq-msm-lockable="./metadata/awsfaces"/>
-                                    </field>
-                                </_x0031_588517866499>
                                 <_x0031_588517798422
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="dam/gui/components/admin/schemafield"
@@ -351,6 +332,156 @@
                                             cq-msm-lockable="./metadata/celebrities"/>
                                     </field>
                                 </_x0031_588517798422>
+                                <_x0031_588573745548
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    disabled="{Boolean}true"
+                                    fieldLabel="Age range"
+                                    name="./jcr:content/metadata/face_agerange"
+                                    resourceType="granite/ui/components/coral/foundation/form/textfield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        cq-msm-lockable="./metadata/face_agerange"
+                                        metaType="text"
+                                        requiredCascading="default"
+                                        visibilityCascading="default"/>
+                                </_x0031_588573745548>
+                                <_x0031_588573728700
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    disabled="{Boolean}true"
+                                    fieldLabel="Beard"
+                                    name="./jcr:content/metadata/face_beard"
+                                    resourceType="granite/ui/components/coral/foundation/form/textfield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        cq-msm-lockable="./metadata/face_beard"
+                                        metaType="text"
+                                        requiredCascading="default"
+                                        visibilityCascading="default"/>
+                                </_x0031_588573728700>
+                                <_x0031_588573751792
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    fieldLabel="Emotion"
+                                    resourceType="granite/ui/components/coral/foundation/form/multifield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        metaType="mvtext"
+                                        requiredCascading="default"
+                                        visibilityCascading="default"/>
+                                    <field
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        name="./jcr:content/metadata/face_emotion">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="./metadata/face_emotion"/>
+                                    </field>
+                                </_x0031_588573751792>
+                                <_x0031_588573743028
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    disabled="{Boolean}true"
+                                    fieldLabel="Eye glasses"
+                                    name="./jcr:content/metadata/face_eyeglasses"
+                                    resourceType="granite/ui/components/coral/foundation/form/textfield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        cq-msm-lockable="./metadata/face_eyeglasses"
+                                        metaType="text"
+                                        requiredCascading="default"
+                                        visibilityCascading="default"/>
+                                </_x0031_588573743028>
+                                <_x0031_588573740922
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    disabled="{Boolean}true"
+                                    fieldLabel="Eye open"
+                                    name="./jcr:content/metadata/face_eyeopen"
+                                    resourceType="granite/ui/components/coral/foundation/form/textfield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        cq-msm-lockable="./metadata/face_eyeopen"
+                                        metaType="text"
+                                        requiredCascading="default"
+                                        visibilityCascading="default"/>
+                                </_x0031_588573740922>
+                                <_x0031_588573738707
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    disabled="{Boolean}true"
+                                    fieldLabel="Gender"
+                                    name="./jcr:content/metadata/face_gender"
+                                    resourceType="granite/ui/components/coral/foundation/form/textfield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        cq-msm-lockable="./metadata/face_gender"
+                                        metaType="text"
+                                        requiredCascading="default"
+                                        visibilityCascading="default"/>
+                                </_x0031_588573738707>
+                                <_x0031_588573731373
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    disabled="{Boolean}true"
+                                    fieldLabel="Mustache"
+                                    name="./jcr:content/metadata/face_mustache"
+                                    resourceType="granite/ui/components/coral/foundation/form/textfield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        cq-msm-lockable="./metadata/face_mustache"
+                                        metaType="text"
+                                        requiredCascading="default"
+                                        visibilityCascading="default"/>
+                                </_x0031_588573731373>
+                                <_x0031_588573736029
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    disabled="{Boolean}true"
+                                    fieldLabel="Mouth open"
+                                    name="./jcr:content/metadata/face_mouthopen"
+                                    resourceType="granite/ui/components/coral/foundation/form/textfield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        cq-msm-lockable="./metadata/face_mouthopen"
+                                        metaType="text"
+                                        requiredCascading="default"
+                                        visibilityCascading="default"/>
+                                </_x0031_588573736029>
+                                <_x0031_588573748113
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    fieldLabel="Pose"
+                                    resourceType="granite/ui/components/coral/foundation/form/multifield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        metaType="mvtext"
+                                        requiredCascading="default"
+                                        visibilityCascading="default"/>
+                                    <field
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        name="./jcr:content/metadata/face_pose">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="./metadata/face_pose"/>
+                                    </field>
+                                </_x0031_588573748113>
+                                <_x0031_588573733611
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/gui/components/admin/schemafield"
+                                    disabled="{Boolean}true"
+                                    fieldLabel="Sunglasses"
+                                    name="./jcr:content/metadata/face_sunglasses"
+                                    resourceType="granite/ui/components/coral/foundation/form/textfield">
+                                    <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        cq-msm-lockable="./metadata/face_sunglasses"
+                                        metaType="text"
+                                        requiredCascading="default"
+                                        visibilityCascading="default"/>
+                                </_x0031_588573733611>
                             </items>
                         </col2>
                         <col3
