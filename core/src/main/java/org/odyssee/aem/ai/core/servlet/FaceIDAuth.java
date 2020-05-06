@@ -1,12 +1,12 @@
 package org.odyssee.aem.ai.core.servlet;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Base64;
 
 import javax.servlet.Servlet;
 
+import org.apache.jackrabbit.api.security.user.Authorizable;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
@@ -21,6 +21,9 @@ import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.adobe.granite.security.user.UserProperties;
+import com.adobe.granite.security.user.UserPropertiesManager;
+import com.adobe.granite.security.user.UserPropertiesService;
 import com.amazonaws.services.rekognition.AmazonRekognition;
 import com.amazonaws.services.rekognition.model.CompareFacesRequest;
 import com.amazonaws.services.rekognition.model.CompareFacesResult;
@@ -33,7 +36,7 @@ public class FaceIDAuth extends SlingAllMethodsServlet {
 
 	private static final long serialVersionUID = 1L;
 	private final Logger log = LoggerFactory.getLogger(FaceIDAuth.class);
-	
+    
 	@Reference
 	private AwsCredentialsService awsCredentialsService;
 
@@ -48,8 +51,17 @@ public class FaceIDAuth extends SlingAllMethodsServlet {
 				
 		// Image from user
 		ResourceResolver rr = request.getResourceResolver();
-		Resource r = rr.getResource("/content/dam/we-retail/en/people/me.png");
-		Image userImage = Helper.getImage(r.adaptTo(Asset.class));
+//		Resource r = rr.getResource("/content/dam/we-retail/en/people/me.png");
+		Resource r;
+		Image userImage = null;
+		try {
+			r = getUserPhoto(rr);
+            log.info("#### PHOTO: {}",r.getPath());
+			userImage = Helper.getImage(r.adaptTo(Asset.class));
+		} catch (Exception e) {
+			log.error("-->", e);
+			e.printStackTrace();
+		}
 		
 		
 		if (isSimilar(postedImage,userImage)) {
@@ -85,4 +97,23 @@ public class FaceIDAuth extends SlingAllMethodsServlet {
 		ByteBuffer imageBytes = ByteBuffer.wrap(byteArray);
 		return new Image().withBytes(imageBytes);
 	}
+	
+	private String getUserPhoto(ResourceResolver resolver) throws Exception {
+        Authorizable auth = resolver.adaptTo(Authorizable.class);
+
+        UserPropertiesManager upm = resolver.adaptTo(UserPropertiesManager.class);
+        if (upm != null) {
+            UserProperties props = upm.getUserProperties(auth, UserPropertiesService.PROFILE_PATH);
+            log.info("#### NAME: {}",props.getDisplayName());
+            if (props != null) {
+                Resource photos = props.getResource(UserProperties.PHOTOS);
+                if (photos != null) {
+                    return photos.getPath() + "/primary/image.prof.thumbnail.256.256.png";
+                }
+            }
+        }
+
+        return null;
+    }
+	
 }
