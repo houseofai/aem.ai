@@ -55,7 +55,9 @@ public class FaceIDAuth extends SlingAllMethodsServlet {
 		Resource r;
 		Image userImage = null;
 		try {
-			r = getUserPhoto(rr);
+			//r = getUserPhoto(rr);
+			r = rr.getResource(getUserPhoto(rr));
+			
             log.info("#### PHOTO: {}",r.getPath());
 			userImage = Helper.getImage(r.adaptTo(Asset.class));
 		} catch (Exception e) {
