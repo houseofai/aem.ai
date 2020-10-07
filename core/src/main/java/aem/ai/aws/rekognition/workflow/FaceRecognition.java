@@ -1,4 +1,4 @@
-package org.odyssee.aem.ai.core.workflow.aws.rekognition;
+package aem.ai.aws.rekognition.workflow;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,8 +13,6 @@ import javax.jcr.Session;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.odyssee.aem.ai.core.services.AwsCredentialsService;
-import org.odyssee.aem.ai.core.services.aws.rekognition.Helper;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
@@ -35,6 +33,9 @@ import com.amazonaws.services.rekognition.model.FaceDetail;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.DamConstants;
+
+import aem.ai.aws.services.AwsCredentialsService;
+import aem.ai.aws.services.rekognition.Helper;
 
 @Component(service = WorkflowProcess.class, property = { "process.label=AWS Rekognition - Detecting Faces" })
 public class FaceRecognition implements WorkflowProcess {

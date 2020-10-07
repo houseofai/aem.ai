@@ -1,4 +1,4 @@
-package org.odyssee.aem.ai.core.workflow.aws.rekognition;
+package aem.ai.aws.rekognition.workflow;
 
 import java.nio.ByteBuffer;
 import java.util.List;
@@ -8,7 +8,6 @@ import javax.jcr.Session;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.odyssee.aem.ai.core.services.AwsCredentialsService;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
@@ -30,6 +29,8 @@ import com.amazonaws.util.IOUtils;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.DamConstants;
+
+import aem.ai.aws.services.AwsCredentialsService;
 
 @Component(service = WorkflowProcess.class, property = { "process.label=AWS Rekognition - Recognizing Celebrities" })
 public class CelebrityRecognition implements WorkflowProcess {

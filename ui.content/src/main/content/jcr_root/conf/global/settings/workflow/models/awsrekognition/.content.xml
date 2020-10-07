@@ -22,7 +22,7 @@
                 sling:resourceType="cq/workflow/components/model/process">
                 <metaData
                     jcr:primaryType="nt:unstructured"
-                    PROCESS="org.odyssee.aem.ai.core.workflow.aws.rekognition.ImageRecognition"
+                    PROCESS="aem.ai.aws.rekognition.workflow.ImageRecognition"
                     PROCESS_ARGS="10;0.77"
                     PROCESS_AUTO_ADVANCE="true"/>
             </process>
@@ -36,7 +36,7 @@
                 sling:resourceType="cq/workflow/components/model/process">
                 <metaData
                     jcr:primaryType="nt:unstructured"
-                    PROCESS="org.odyssee.aem.ai.core.workflow.aws.rekognition.TextRecognition"
+                    PROCESS="aem.ai.aws.rekognition.workflow.TextRecognition"
                     PROCESS_AUTO_ADVANCE="true"/>
             </process_752072366>
             <process_1924705749
@@ -49,7 +49,7 @@
                 sling:resourceType="cq/workflow/components/model/process">
                 <metaData
                     jcr:primaryType="nt:unstructured"
-                    PROCESS="org.odyssee.aem.ai.core.workflow.aws.rekognition.CelebrityRecognition"
+                    PROCESS="aem.ai.aws.rekognition.workflow.CelebrityRecognition"
                     PROCESS_AUTO_ADVANCE="true"/>
             </process_1924705749>
             <process_913962684
@@ -62,7 +62,7 @@
                 sling:resourceType="cq/workflow/components/model/process">
                 <metaData
                     jcr:primaryType="nt:unstructured"
-                    PROCESS="org.odyssee.aem.ai.core.workflow.aws.rekognition.FaceRecognition"
+                    PROCESS="aem.ai.aws.rekognition.workflow.aws.rekognition.FaceRecognition"
                     PROCESS_AUTO_ADVANCE="true"/>
             </process_913962684>
             <autotagassetprocess

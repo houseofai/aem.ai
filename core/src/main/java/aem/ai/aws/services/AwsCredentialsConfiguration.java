@@ -1,4 +1,4 @@
-package org.odyssee.aem.ai.core.services;
+package aem.ai.aws.services;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.AttributeType;

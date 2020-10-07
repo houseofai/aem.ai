@@ -1,4 +1,4 @@
-package org.odyssee.aem.ai.core.auth;
+package aem.ai.core.auth;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;

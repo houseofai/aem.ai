@@ -1,4 +1,4 @@
-package org.odyssee.aem.ai.core.services;
+package aem.ai.aws.services;
 
 import org.apache.commons.lang.StringUtils;
 import org.osgi.service.component.annotations.Activate;

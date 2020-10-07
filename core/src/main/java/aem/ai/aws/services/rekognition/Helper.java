@@ -1,4 +1,4 @@
-package org.odyssee.aem.ai.core.services.aws.rekognition;
+package aem.ai.aws.services.rekognition;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -16,7 +16,6 @@ import javax.jcr.nodetype.ConstraintViolationException;
 import javax.jcr.version.VersionException;
 
 import org.apache.sling.api.resource.Resource;
-import org.odyssee.aem.ai.core.services.AwsCredentialsService;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.services.rekognition.AmazonRekognition;
@@ -26,6 +25,8 @@ import com.amazonaws.util.IOUtils;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.DamConstants;
+
+import aem.ai.aws.services.AwsCredentialsService;
 
 public class Helper {
 

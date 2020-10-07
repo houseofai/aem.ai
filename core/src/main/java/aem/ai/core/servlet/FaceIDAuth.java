@@ -1,4 +1,4 @@
-package org.odyssee.aem.ai.core.servlet;
+package aem.ai.core.servlet;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -13,8 +13,6 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
-import org.odyssee.aem.ai.core.services.AwsCredentialsService;
-import org.odyssee.aem.ai.core.services.aws.rekognition.Helper;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -29,6 +27,9 @@ import com.amazonaws.services.rekognition.model.CompareFacesRequest;
 import com.amazonaws.services.rekognition.model.CompareFacesResult;
 import com.amazonaws.services.rekognition.model.Image;
 import com.day.cq.dam.api.Asset;
+
+import aem.ai.aws.services.AwsCredentialsService;
+import aem.ai.aws.services.rekognition.Helper;
 
 @Component(service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "=Face ID Servlet for Authenticator",
 		"sling.servlet.methods=" + HttpConstants.METHOD_GET, "sling.servlet.paths=" + "/bin/faceid" })

@@ -24,7 +24,7 @@
             type="PROCESS">
             <metaData
                 jcr:primaryType="nt:unstructured"
-                PROCESS="org.odyssee.aem.ai.core.workflow.aws.rekognition.ImageRecognition"
+                PROCESS="aem.ai.aws.rekognition.workflow.ImageRecognition"
                 PROCESS_ARGS="10;0.77"
                 PROCESS_AUTO_ADVANCE="true"/>
         </node1>
@@ -34,7 +34,7 @@
             type="PROCESS">
             <metaData
                 jcr:primaryType="nt:unstructured"
-                PROCESS="org.odyssee.aem.ai.core.workflow.aws.rekognition.TextRecognition"
+                PROCESS="aem.ai.aws.rekognition.workflow.TextRecognition"
                 PROCESS_AUTO_ADVANCE="true"/>
         </node2>
         <node3
@@ -43,7 +43,7 @@
             type="PROCESS">
             <metaData
                 jcr:primaryType="nt:unstructured"
-                PROCESS="org.odyssee.aem.ai.core.workflow.aws.rekognition.CelebrityRecognition"
+                PROCESS="aem.ai.aws.rekognition.workflow.CelebrityRecognition"
                 PROCESS_AUTO_ADVANCE="true"/>
         </node3>
         <node4
@@ -52,7 +52,7 @@
             type="PROCESS">
             <metaData
                 jcr:primaryType="nt:unstructured"
-                PROCESS="org.odyssee.aem.ai.core.workflow.aws.rekognition.FaceRecognition"
+                PROCESS="aem.ai.aws.rekognition.workflow.FaceRecognition"
                 PROCESS_AUTO_ADVANCE="true"/>
         </node4>
         <node5

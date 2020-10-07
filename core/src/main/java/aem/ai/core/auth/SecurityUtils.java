@@ -1,4 +1,4 @@
-package org.odyssee.aem.ai.core.auth;
+package aem.ai.core.auth;
 
 import java.util.Arrays;
 import java.util.Random;
