@@ -1,10 +1,10 @@
-# aem.ai
+# AEM.AI
 Adobe Experience Manager with Artificial Intelligence features
 
 
 AWS AI implemented features:
 
-- Face ID: Use Face ID to recognize your face and use it in payements or authentication
+- Face ID: Use Face ID to recognize your face and use it in payments or authentication
 - Celebrity recognition on AEM Assets: Use the implemented workflow to add the celebrities tag on your image.
 - Face recognition: Detect faces on an image
 - Image recognition: Object detection
